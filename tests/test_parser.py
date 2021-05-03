@@ -7,14 +7,14 @@ class TestParser(unittest.TestCase):
         statistics.init_statcounter()
 
     def test_parse_roll(self):
-        self.assertEqual(parser.parse_roll('d6'), parser.SetToRoll(1, 6, 0))
-        self.assertEqual(parser.parse_roll('w6'), parser.SetToRoll(1, 6, 0))
-        self.assertEqual(parser.parse_roll('1d6'), parser.SetToRoll(1, 6, 0))
-        self.assertEqual(parser.parse_roll('1w6'), parser.SetToRoll(1, 6, 0))
-        self.assertEqual(parser.parse_roll('2d6'), parser.SetToRoll(2, 6, 0))
-        self.assertEqual(parser.parse_roll('2w6'), parser.SetToRoll(2, 6, 0))
-        self.assertEqual(parser.parse_roll('3d20'), parser.SetToRoll(3, 20, 0))
-        self.assertEqual(parser.parse_roll('3w20'), parser.SetToRoll(3, 20, 0))
+        self.assertEqual(parser.parse_roll('d6'), parser.SetToRoll(1, 6, None))
+        self.assertEqual(parser.parse_roll('w6'), parser.SetToRoll(1, 6, None))
+        self.assertEqual(parser.parse_roll('1d6'), parser.SetToRoll(1, 6, None))
+        self.assertEqual(parser.parse_roll('1w6'), parser.SetToRoll(1, 6, None))
+        self.assertEqual(parser.parse_roll('2d6'), parser.SetToRoll(2, 6, None))
+        self.assertEqual(parser.parse_roll('2w6'), parser.SetToRoll(2, 6, None))
+        self.assertEqual(parser.parse_roll('3d20'), parser.SetToRoll(3, 20, None))
+        self.assertEqual(parser.parse_roll('3w20'), parser.SetToRoll(3, 20, None))
 
         self.assertEqual(parser.parse_roll('d6+2'), parser.SetToRoll(1, 6, 2))
         self.assertEqual(parser.parse_roll('w6-2'), parser.SetToRoll(1, 6, -2))
@@ -22,6 +22,11 @@ class TestParser(unittest.TestCase):
         self.assertEqual(parser.parse_roll('2w6+4'), parser.SetToRoll(2, 6, 4))
         self.assertEqual(parser.parse_roll('3d20+10'), parser.SetToRoll(3, 20, 10))
         self.assertEqual(parser.parse_roll('3w20-10'), parser.SetToRoll(3, 20, -10))
+
+        self.assertEqual(parser.parse_roll('2d6+'), parser.SetToRoll(2, 6, 0))
+        self.assertEqual(parser.parse_roll('2w6-'), parser.SetToRoll(2, 6, 0))
+        self.assertEqual(parser.parse_roll('2d6+0'), parser.SetToRoll(2, 6, 0))
+        self.assertEqual(parser.parse_roll('2w6-0'), parser.SetToRoll(2, 6, 0))
 
         with self.assertRaises(ValueError):
             parser.parse_roll('foo')

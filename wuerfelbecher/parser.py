@@ -9,7 +9,11 @@ def parse_roll(message: str) -> SetToRoll:
     if m:
         count = 1 if m.group(1) is None else int(m.group(1))
         dice_type = int(m.group(2))
-        modifier = 0 if m.group(3) == '' else int(m.group(3))
+        modifier = None
+        if m.group(3) in ('+','-'):
+            modifier = 0
+        elif m.group(3) != '':
+            modifier = int(m.group(3))
         return SetToRoll(count, dice_type, modifier)
     raise ValueError
 

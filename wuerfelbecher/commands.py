@@ -13,11 +13,13 @@ def roll(message: str) -> str:
             for i in range(s.count):
                 rolls.append(dice_roller.roll_dice(s.dice_type))            
             result += '[ **'+'  '.join([str(i) for i in rolls])+'** ]'
-            if s.modifier != 0:
+            if s.modifier is not None:
                 sum_of_rolls = sum(rolls)
                 if s.modifier > 0:
-                    result += '+'
-                result += str(s.modifier)+'=**'+str(sum_of_rolls+s.modifier)+'**'
+                    result += '+' + str(s.modifier)
+                elif s.modifier < 0:
+                    result += str(s.modifier)
+                result += '=**'+str(sum_of_rolls+s.modifier)+'**'
         return result.lstrip().rstrip()
     except ValueError:
         return 'You shall not pass!'
