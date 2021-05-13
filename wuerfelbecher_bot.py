@@ -1,13 +1,9 @@
 import discord
+from discord.ext import commands
 import os
 import wuerfelbecher
 
-def removeprefix(command: str, prefix: str) -> str:
-    if command.startswith(prefix):
-        return command[len(prefix):]
-    return
-
-def help() -> str:
+def help_message() -> str:
     return '''
     The Würfelbecher Bot knows about:
     > !help - This command
@@ -19,24 +15,29 @@ def help() -> str:
     '''
 
 if __name__ == '__main__':
-    client = discord.Client()
-
-    @client.event
+    bot = commands.Bot(command_prefix='!',
+     description='Wuerfelbecher is a simple dice rolling bot for pen&paper roleplaying',
+     help_command=None)
+    
+    @bot.event
     async def on_ready():
-        print('{0.user} online and ready to roll'.format(client))
+        print('{0.user} online and ready to roll'.format(bot))
 
-    @client.event
-    async def on_message(message):
-        if message.author == client.user:
-            return
+    # TODO: consider to replace with auto-generated help command
+    @bot.command()
+    async def help(ctx):
+        await ctx.send(help_message())
 
-        if message.content.startswith('!roll'):
-            await message.channel.send(message.author.name + ': ' + wuerfelbecher.commands.roll(removeprefix(message.content, '!roll')))
-        elif message.content.startswith('!r'):
-            await message.channel.send(message.author.name + ': ' + wuerfelbecher.commands.roll(removeprefix(message.content, '!r')))
-        elif message.content.startswith('!stats'):
-            await message.channel.send(wuerfelbecher.commands.stats(removeprefix(message.content, '!stats')))
-        elif message.content.startswith('!help'):
-            await message.channel.send(help())
+    @bot.command()
+    async def stats(ctx, *args):
+        await ctx.send(wuerfelbecher.commands.stats(' '.join(args)))
 
-    client.run(os.getenv('DISCORD_BOT_TOKEN'))
+    @bot.command()
+    async def roll(ctx, *args):
+        await ctx.send(ctx.author.name + ': ' + wuerfelbecher.commands.roll(' '.join(args)))
+
+    @bot.command()
+    async def r(ctx, *args):
+        await ctx.send(ctx.author.name + ': ' + wuerfelbecher.commands.roll(' '.join(args)))
+
+    bot.run(os.getenv('DISCORD_BOT_TOKEN'))

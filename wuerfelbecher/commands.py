@@ -21,7 +21,7 @@ def roll(message: str) -> str:
                 result += '=**'+str(sum_of_rolls+s.modifier)+'**'
         return result.lstrip().rstrip()
     except ValueError:
-        return 'You shall not pass!'
+        return 'You shall not pass! Ask for *!help* if you fear my power!'
 
 def stats(message: str) -> str:
     try:
@@ -31,4 +31,4 @@ def stats(message: str) -> str:
             rolls, ''.join(['{0}: {1}\n'.format(i, counts[i]) for i in range(1, number_of_sides+1)])
             )
     except ValueError:
-        return 'You shall not pass!'
+        return 'You shall not pass! Ask for *!help* if you fear my power!'
