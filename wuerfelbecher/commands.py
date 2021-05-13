@@ -4,11 +4,10 @@ from . import statistics
 
 def roll(message: str) -> str:
     try:
-        #TODO: provide support for multiple type of dice rolls at once, see test cases
-        sets_to_roll = [parser.parse_roll(message)]
+        sets_to_roll = parser.parse_roll(message)
         result = ''
         for s in sets_to_roll:
-            result += ' '
+            result += '  '
             rolls = []
             for i in range(s.count):
                 rolls.append(dice_roller.roll_dice(s.dice_type))            
@@ -33,4 +32,3 @@ def stats(message: str) -> str:
             )
     except ValueError:
         return 'You shall not pass!'
-    
