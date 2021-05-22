@@ -21,6 +21,7 @@ class TestCommands(unittest.TestCase):
         self.assertEqual(commands.roll('foo'), 'You shall not pass! Ask for *!help* if you fear my power!')
         self.assertEqual(commands.roll('d2!'), 'You shall not pass! Ask for *!help* if you fear my power!')
         self.assertEqual(commands.roll('!w2'), 'You shall not pass! Ask for *!help* if you fear my power!')
+        self.assertEqual(commands.roll('d0'), 'You shall not pass! Ask for *!help* if you fear my power!')
 
     def test_stats(self):
         self.assertEqual(commands.stats('d2'), 'You rolled 0 times and those were the rolls:\n>>> 1: 0\n2: 0\n')

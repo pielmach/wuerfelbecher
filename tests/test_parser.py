@@ -52,6 +52,8 @@ class TestParser(unittest.TestCase):
             parser.parse_roll('w20,2w6+2')
         with self.assertRaises(ValueError):
             parser.parse_roll('w20;2w6+2')
+        with self.assertRaises(ValueError):
+            parser.parse_roll('w0')
 
     def test_parse_stats(self):
         self.assertEqual(parser.parse_stats('d6'), 6)
@@ -67,6 +69,8 @@ class TestParser(unittest.TestCase):
             parser.parse_stats('d20w6')
         with self.assertRaises(ValueError):
             parser.parse_stats('d20 w6')
+        with self.assertRaises(ValueError):
+            parser.parse_stats('d0')
 
 if __name__ == '__main__':
     unittest.main()
