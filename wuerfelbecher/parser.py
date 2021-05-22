@@ -29,11 +29,11 @@ def parse_roll(message: str) -> [SetToRoll]:
     '''
     stripped_message = message.lstrip().rstrip()
 
-    dice_pattern_match = re.match(r'^([1-9])?[dw]([1-9][0-9]*)([\+\-]?[0-9]*)$', stripped_message)
+    dice_pattern_match = re.match(r'^([1-9][0-9]*)?[dw]([1-9][0-9]*)([\+\-]?[0-9]*)$', stripped_message)
     if dice_pattern_match:
         return [_translate_dice_pattern_match(dice_pattern_match)]
     
-    dice_pattern_inverse_match = re.match(r'^([\+\-]?[0-9]+)[\+]([1-9])?[dw]([1-9][0-9]*)$', stripped_message)
+    dice_pattern_inverse_match = re.match(r'^([\+\-]?[0-9]+)[\+]([1-9][0-9]*)?[dw]([1-9][0-9]*)$', stripped_message)
     if dice_pattern_inverse_match:
         return [_translate_dice_pattern_inverse_match(dice_pattern_inverse_match)]
     

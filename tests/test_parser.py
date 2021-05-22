@@ -15,6 +15,7 @@ class TestParser(unittest.TestCase):
         self.assertEqual(parser.parse_roll('2w6'), [parser.SetToRoll(2, 6, None)])
         self.assertEqual(parser.parse_roll('3d20'), [parser.SetToRoll(3, 20, None)])
         self.assertEqual(parser.parse_roll('3w20'), [parser.SetToRoll(3, 20, None)])
+        self.assertEqual(parser.parse_roll('10w6'), [parser.SetToRoll(10, 6, None)])
 
         self.assertEqual(parser.parse_roll('d6+2'), [parser.SetToRoll(1, 6, 2)])
         self.assertEqual(parser.parse_roll('w6-2'), [parser.SetToRoll(1, 6, -2)])
