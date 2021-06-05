@@ -1,4 +1,8 @@
+
 # Wuerfelbecher 
+
+[![Build Status](https://github.com/pielmach/wuerfelbecher/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/pielmach/wuerfelbecher/actions)
+[![codecov](https://codecov.io/gh/pielmach/wuerfelbecher/branch/master/graph/badge.svg)](https://codecov.io/gh/pielmach/wuerfelbecher)
 
 Wuerfelbecher is a simple, Python 3.8+ based, Discord bot for rolling dices.
 
