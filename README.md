@@ -34,7 +34,7 @@ See first section of https://www.freecodecamp.org/news/create-a-discord-bot-with
 
 ```bash
 export DISCORD_BOT_TOKEN=<discord-bot-token>
-pip install -r requirements.txt.pinned
+pip install -r requirements.txt
 python wuerfelbecher_bot.py
 ```
 
