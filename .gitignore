@@ -1,4 +1,5 @@
 .env
+discord_bot_token.secret
 venv/
 __pycache__
 .vscode

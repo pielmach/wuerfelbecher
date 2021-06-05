@@ -1,0 +1,17 @@
+version: '3.9'
+
+services:
+  wuerfelbecher:
+    image: wuerfelbecher:latest
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    # by default will search for a .env file in the current working directory
+    #environment:
+    #  DISCORD_BOT_TOKEN: "${DISCORD_BOT_TOKEN}"
+    secrets:
+      - discord_bot_token
+
+secrets:
+  discord_bot_token:
+    file: ./discord_bot_token.secret

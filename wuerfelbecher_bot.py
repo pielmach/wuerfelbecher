@@ -23,7 +23,7 @@ if __name__ == '__main__':
     async def on_ready():
         print('{0.user} online and ready to roll'.format(bot))
 
-    # TODO: consider to replace with auto-generated help command
+    # TODO: consider to replace with auto-generated discord help command
     @bot.command()
     async def help(ctx):
         await ctx.send(help_message())
@@ -40,4 +40,12 @@ if __name__ == '__main__':
     async def r(ctx, *args):
         await ctx.send(ctx.author.name + ': ' + wuerfelbecher.commands.roll(' '.join(args)))
 
-    bot.run(os.getenv('DISCORD_BOT_TOKEN'))
+    # Strategy: First check for docker secret, then fallback to environment variable, then fail
+    if os.path.exists('/run/secrets/discord_bot_token'):
+        print("Using docker secret to login")
+        bot.run(open('/run/secrets/discord_bot_token').read().rstrip('\n'))
+    elif 'DISCORD_BOT_TOKEN' in os.environ:
+        print("Using environment variable to login")
+        bot.run(os.getenv('DISCORD_BOT_TOKEN'))
+    else:
+        print("Failed to find access token for discord bot")
