@@ -55,8 +55,8 @@ Wuerfelbecher was developed using TDD. If you want to tweak it to your needs, be
 
 ```bash
 pip install -r requirements.txt.pinned
-pip install coverage
-coverage run --source=wuerfelbecher -m unittest -v && coverage report -m
+pip install pytest pytest-cov
+pytest --cov=wuerfelbecher --cov-report=term-missing tests/
 ```
 
 
