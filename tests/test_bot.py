@@ -14,7 +14,7 @@ class TestBot(unittest.TestCase):
         self.test_file.writelines('test_secret_file')
         self.test_file.flush()
 
-    def tearDown(self):        
+    def tearDown(self):
         self.test_file.close()
         os.environ.pop('TEST_ENV')
         self.test_bot = None

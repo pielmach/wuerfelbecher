@@ -57,11 +57,13 @@ Wuerfelbecher was developed using TDD. If you want to tweak it to your needs, be
 
 ```bash
 pip install -r requirements.txt
-pip install pytest pytest-cov flake8
+pip install flake8 mypy pytest pytest-cov
 # flake8 as run in GitHub action: stop the build if there are Python syntax errors or undefined names
 flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 # flake8 as run in GitHub action: exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
 flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+# type checking with mypy
+mypy --disallow-untyped-defs wuerfelbecher/
 # execute tests and obtain code coverage
 pytest --cov=wuerfelbecher --cov-report=term-missing tests/
 ```
