@@ -1,1 +1,1 @@
-__all__ = ['dice_roller', 'parser', 'commands', 'statistics']
+__all__ = ['bot', 'dice_roller', 'parser', 'commands', 'statistics']
