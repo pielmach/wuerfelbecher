@@ -1,4 +1,5 @@
-from discord.ext import commands as discord_commands
+from discord.ext.commands import Bot  # type: ignore
+from discord.ext.commands import Context  # type: ignore
 import os
 from . import commands as wuerfelbecher_commands
 
@@ -32,32 +33,32 @@ def get_bot_token(secret_path: str, environment_variable: str) -> str:
             secret_path, environment_variable))
 
 
-def setup_bot():
-    bot = discord_commands.Bot(
+def setup_bot() -> Bot:
+    bot = Bot(
         command_prefix='!',
         description='Wuerfelbecher is a simple dice rolling bot for pen&paper roleplaying',
         help_command=None
     )
 
     @bot.event
-    async def on_ready():
+    async def on_ready() -> None:
         print('{0.user} online and ready to roll'.format(bot))
 
     # TODO: consider to replace with auto-generated discord help command
     @bot.command()
-    async def help(ctx):
+    async def help(ctx: Context) -> None:
         await ctx.send(help_message())
 
     @bot.command()
-    async def stats(ctx, *args):
+    async def stats(ctx: Context, *args: str) -> None:
         await ctx.send(wuerfelbecher_commands.stats(' '.join(args)))
 
     @bot.command()
-    async def roll(ctx, *args):
+    async def roll(ctx: Context, *args: str) -> None:
         await ctx.send(ctx.author.name + ': ' + wuerfelbecher_commands.roll(' '.join(args)))
 
     @bot.command()
-    async def r(ctx, *args):
+    async def r(ctx: Context, *args: str) -> None:
         await ctx.send(ctx.author.name + ': ' + wuerfelbecher_commands.roll(' '.join(args)))
 
     return bot
