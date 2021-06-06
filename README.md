@@ -37,6 +37,7 @@ See first section of https://www.freecodecamp.org/news/create-a-discord-bot-with
 ### Running from your local machine with Python only
 
 ```bash
+# if run locally we read the access token from the environment
 export DISCORD_BOT_TOKEN=<discord-bot-token>
 pip install -r requirements.txt
 python wuerfelbecher_bot.py
@@ -45,6 +46,7 @@ python wuerfelbecher_bot.py
 ### Building Docker image and running as a container
 
 ```bash
+# edit docker-compose.yml to inject access token via environment instead of using docker secrets
 echo <discord-bot-token> > discord_bot_token.secret
 docker-compose up --build
 ```
