@@ -1,6 +1,7 @@
 import unittest
 from wuerfelbecher import statistics
 
+
 class TestStatistics(unittest.TestCase):
     def setUp(self):
         statistics.init_statcounter()
@@ -22,7 +23,7 @@ class TestStatistics(unittest.TestCase):
         self.assertEqual(counts[4], 1)
         self.assertEqual(counts[5], 3)
         self.assertEqual(counts[6], 0)
-        
+
         statistics.init_statcounter()
         rolls, counts = statistics.get_stats(6)
         self.assertEqual(rolls, 0)

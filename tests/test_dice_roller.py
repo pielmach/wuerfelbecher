@@ -2,6 +2,7 @@ import unittest
 from wuerfelbecher import dice_roller
 from wuerfelbecher import statistics
 
+
 class TestDiceRoll(unittest.TestCase):
     def setUp(self):
         statistics.init_statcounter()
@@ -11,6 +12,7 @@ class TestDiceRoll(unittest.TestCase):
         self.assertTrue(False not in results)
         rolls, _ = statistics.get_stats(6)
         self.assertEqual(rolls, 10000)
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,6 +2,7 @@ from . import parser
 from . import dice_roller
 from . import statistics
 
+
 def roll(message: str) -> str:
     try:
         sets_to_roll = parser.parse_roll(message)
@@ -10,7 +11,7 @@ def roll(message: str) -> str:
             result += '  '
             rolls = []
             for i in range(s.count):
-                rolls.append(dice_roller.roll_dice(s.dice_type))            
+                rolls.append(dice_roller.roll_dice(s.dice_type))
             result += '[ **'+'  '.join([str(i) for i in rolls])+'** ]'
             if s.modifier is not None:
                 sum_of_rolls = sum(rolls)
@@ -22,6 +23,7 @@ def roll(message: str) -> str:
         return result.lstrip().rstrip()
     except ValueError:
         return 'You shall not pass! Ask for *!help* if you fear my power!'
+
 
 def stats(message: str) -> str:
     try:

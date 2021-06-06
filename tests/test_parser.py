@@ -2,6 +2,7 @@ import unittest
 from wuerfelbecher import parser
 from wuerfelbecher import statistics
 
+
 class TestParser(unittest.TestCase):
     def setUp(self):
         statistics.init_statcounter()
@@ -72,6 +73,7 @@ class TestParser(unittest.TestCase):
             parser.parse_stats('d20 w6')
         with self.assertRaises(ValueError):
             parser.parse_stats('d0')
+
 
 if __name__ == '__main__':
     unittest.main()
