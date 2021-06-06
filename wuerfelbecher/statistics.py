@@ -1,3 +1,4 @@
+from typing import Tuple
 from collections import Counter
 from collections import defaultdict
 
@@ -9,7 +10,7 @@ def add_dice_roll(number_of_sides: int, dice_roll: int):
     __statcounter__[number_of_sides][dice_roll] += 1
 
 
-def get_stats(number_of_sides: int) -> (int, Counter):
+def get_stats(number_of_sides: int) -> Tuple[int, Counter]:
     global __statcounter__
     return sum(__statcounter__[number_of_sides].values()), __statcounter__[number_of_sides]
 

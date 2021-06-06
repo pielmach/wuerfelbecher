@@ -1,4 +1,5 @@
 import re
+from typing import List
 from collections import namedtuple
 
 SetToRoll = namedtuple('SetToRoll', ['count', 'dice_type', 'modifier'])
@@ -22,7 +23,7 @@ def _translate_dice_pattern_inverse_match(match: re.Match) -> SetToRoll:
     return SetToRoll(count, dice_type, modifier)
 
 
-def parse_roll(message: str) -> [SetToRoll]:
+def parse_roll(message: str) -> List[SetToRoll]:
     '''Parses the message of the roll command. The applied strategy is:
 
     1. Try the regular dice pattern e.g. 2d6+10
