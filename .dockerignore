@@ -1,11 +1,16 @@
 **/__pycache__
 **/.classpath
+**/.coverage
+**/.discord_bot_token*
 **/.dockerignore
 **/.env
-**/.discord_bot_token*
+**/.flake8
 **/.git
 **/.gitignore
+**/.github
+**/.mypy_cache
 **/.project
+**/.pytest_cache
 **/.settings
 **/.toolstarget
 **/.vs
@@ -25,3 +30,7 @@
 **/secrets.dev.yaml
 **/values.dev.yaml
 README.md
+TODO.md
+venv
+tests
+coverage.xml
