@@ -12,9 +12,7 @@ attrs==21.2.0
     # via aiohttp
 chardet==4.0.0
     # via aiohttp
-discord.py==1.7.2
-    # via discord
-discord==1.0.1
+discord.py==1.7.3
     # via -r requirements.in
 idna==3.2
     # via yarl
