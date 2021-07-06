@@ -1,6 +1,6 @@
 import unittest
-from wuerfelbecher import dice_roller
-from wuerfelbecher import statistics
+
+from wuerfelbecher import dice_roller, statistics
 
 
 class TestDiceRoll(unittest.TestCase):
@@ -14,5 +14,5 @@ class TestDiceRoll(unittest.TestCase):
         self.assertEqual(rolls, 10000)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
