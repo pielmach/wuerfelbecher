@@ -3,7 +3,7 @@ from . import dice_roller, parser, statistics
 
 def roll(message: str) -> str:
     try:
-        sets_to_roll = parser.parse_roll(message)
+        sets_to_roll = parser.parse_roll(message.lower())
         result = ""
         for s in sets_to_roll:
             result += "  "
@@ -25,7 +25,7 @@ def roll(message: str) -> str:
 
 def stats(message: str) -> str:
     try:
-        number_of_sides = parser.parse_stats(message)
+        number_of_sides = parser.parse_stats(message.lower())
         rolls, counts = statistics.get_stats(number_of_sides)
         return "You rolled {0} times and those were the rolls:\n>>> {1}".format(
             rolls,
