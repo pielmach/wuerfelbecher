@@ -9,6 +9,9 @@ class TestCommands(unittest.TestCase):
 
     def test_roll(self):
         self.assertTrue(commands.roll("d2") in ["[ **1** ]", "[ **2** ]"])
+        self.assertTrue(commands.roll("D2") in ["[ **1** ]", "[ **2** ]"])
+        self.assertTrue(commands.roll("w2") in ["[ **1** ]", "[ **2** ]"])
+        self.assertTrue(commands.roll("W2") in ["[ **1** ]", "[ **2** ]"])
         self.assertTrue(commands.roll(" d2") in ["[ **1** ]", "[ **2** ]"])
         self.assertTrue(commands.roll("d2 ") in ["[ **1** ]", "[ **2** ]"])
         self.assertTrue(commands.roll("d2-1") in ["[ **1** ]-1=**0**", "[ **2** ]-1=**1**"])
@@ -79,6 +82,10 @@ class TestCommands(unittest.TestCase):
     def test_stats(self):
         self.assertEqual(
             commands.stats("d2"),
+            "You rolled 0 times and those were the rolls:\n>>> 1: 0\n2: 0\n",
+        )
+        self.assertEqual(
+            commands.stats("W2"),
             "You rolled 0 times and those were the rolls:\n>>> 1: 0\n2: 0\n",
         )
         self.assertEqual(
