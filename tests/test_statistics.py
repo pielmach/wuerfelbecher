@@ -1,4 +1,5 @@
 import unittest
+
 from wuerfelbecher import statistics
 
 
@@ -44,5 +45,5 @@ class TestStatistics(unittest.TestCase):
         self.assertEqual(counts[20], 1)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

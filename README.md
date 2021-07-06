@@ -51,13 +51,17 @@ echo <discord-bot-token> > discord_bot_token.secret
 docker-compose up --build
 ```
 
-## Tests
+## Code-Style and Tests
 
-Wuerfelbecher was developed using TDD. If you want to tweak it to your needs, below will run all tests and determine code coverage for you.
+Wuerfelbecher was developed using TDD and formatted using isort and black. If you want to tweak it to your needs, below will run all formatters, tests and determine code coverage for you.
 
 ```bash
 pip install -r requirements.txt
-pip install flake8 mypy pytest pytest-cov
+pip install flake8 black isort mypy pytest pytest-cov
+# auto-sort imports
+isort .
+# auto-format code
+black --line-length=127 .
 # flake8 as run in GitHub action: stop the build if there are Python syntax errors or undefined names
 flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
 # flake8 as run in GitHub action: exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
@@ -67,9 +71,4 @@ mypy --disallow-untyped-defs wuerfelbecher/
 # execute tests and obtain code coverage
 pytest --cov=wuerfelbecher --cov-report=term-missing tests/
 ```
-
-
-
-
-
 

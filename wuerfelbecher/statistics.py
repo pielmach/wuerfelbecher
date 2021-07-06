@@ -1,6 +1,5 @@
-from typing import Tuple, DefaultDict
-from collections import Counter
-from collections import defaultdict
+from collections import Counter, defaultdict
+from typing import DefaultDict, Tuple
 
 __statcounter__ = defaultdict(Counter)  # type: DefaultDict[int, Counter]
 
