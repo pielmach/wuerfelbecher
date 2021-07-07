@@ -26,14 +26,8 @@ class TestBot(unittest.TestCase):
         print(self.test_bot.commands)
 
     def test_get_bot_token(self):
-        self.assertEqual(
-            bot.get_bot_token(self.test_file.name, "RANDOM_NOT_EXISTING_ENV"),
-            "test_secret_file",
-        )
-        self.assertEqual(
-            bot.get_bot_token("/tmp/random_not_existing_path", "TEST_ENV"),
-            "test_secret_env",
-        )
+        self.assertEqual(bot.get_bot_token(self.test_file.name, "RANDOM_NOT_EXISTING_ENV"), "test_secret_file")
+        self.assertEqual(bot.get_bot_token("/tmp/random_not_existing_path", "TEST_ENV"), "test_secret_env")
         self.assertEqual(bot.get_bot_token(self.test_file.name, "TEST_ENV"), "test_secret_file")
 
         with self.assertRaises(RuntimeError):

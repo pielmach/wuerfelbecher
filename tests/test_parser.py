@@ -34,26 +34,11 @@ class TestParser(unittest.TestCase):
         self.assertEqual(parser.parse_roll("12+2w6"), [parser.SetToRoll(2, 6, 12)])
         self.assertEqual(parser.parse_roll("-1+2w6"), [parser.SetToRoll(2, 6, -1)])
 
-        self.assertEqual(
-            parser.parse_roll("w20 2w6+2"),
-            [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)],
-        )
-        self.assertEqual(
-            parser.parse_roll("w20 2w6+2 "),
-            [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)],
-        )
-        self.assertEqual(
-            parser.parse_roll(" w20 2w6+2"),
-            [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)],
-        )
-        self.assertEqual(
-            parser.parse_roll(" w20  2w6+2 "),
-            [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)],
-        )
-        self.assertEqual(
-            parser.parse_roll("  w20  2w6+2  "),
-            [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)],
-        )
+        self.assertEqual(parser.parse_roll("w20 2w6+2"), [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)])
+        self.assertEqual(parser.parse_roll("w20 2w6+2 "), [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)])
+        self.assertEqual(parser.parse_roll(" w20 2w6+2"), [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)])
+        self.assertEqual(parser.parse_roll(" w20  2w6+2 "), [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)])
+        self.assertEqual(parser.parse_roll("  w20  2w6+2  "), [parser.SetToRoll(1, 20, None), parser.SetToRoll(2, 6, 2)])
 
         with self.assertRaises(ValueError):
             parser.parse_roll("foo")
