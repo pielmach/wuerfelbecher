@@ -63,10 +63,10 @@ def setup_bot() -> Bot:
 
     @bot.command()
     async def roll(ctx: Context, *args: str) -> None:
-        await ctx.send(ctx.author.name + ": " + wuerfelbecher_commands.roll(" ".join(args)))
+        await ctx.send(ctx.author.display_name + ": " + wuerfelbecher_commands.roll(" ".join(args)))
 
     @bot.command()
     async def r(ctx: Context, *args: str) -> None:
-        await ctx.send(ctx.author.name + ": " + wuerfelbecher_commands.roll(" ".join(args)))
+        await ctx.send(ctx.author.display_name + ": " + wuerfelbecher_commands.roll(" ".join(args)))
 
     return bot
