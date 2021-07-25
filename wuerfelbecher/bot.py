@@ -2,20 +2,9 @@ import os
 
 from discord.ext.commands import Bot  # type: ignore
 from discord.ext.commands import Context  # type: ignore
+from discord.ext.commands import DefaultHelpCommand  # type: ignore
 
 from . import commands as wuerfelbecher_commands
-
-
-def help_message() -> str:
-    return """
-    The Würfelbecher Bot knows about:
-    > !help - This command
-    > !roll *DicePattern* or !r *DicePattern* - Will roll dices according to given pattern. Multiple patterns split by a space are also possible.
-    > !stats *DiceType* - Will report stats on given dice type
-    > 
-    > *DiceType* can be d or w followed by number of sides. Examples: d6, w20
-    > *DicePattern* can be a number, followed by a *DiceType*, optionally followed (or preceded) by a positive or negative modificator, including just + or - sign. If any modifier is given, the dice results are summed up, including the modifier. Examples: 3w20, 1d6+4, 12+w6, 7d6+
-    """
 
 
 def get_bot_token(secret_path: str, environment_variable: str) -> str:
@@ -44,29 +33,31 @@ def get_bot_token(secret_path: str, environment_variable: str) -> str:
 def setup_bot() -> Bot:
     bot = Bot(
         command_prefix="!",
-        description="Wuerfelbecher is a simple dice rolling bot for pen&paper roleplaying",
-        help_command=None,
+        description="Wuerfelbecher is a simple dice rolling bot for pen & paper roleplaying",
+        help_command=DefaultHelpCommand(no_category="Available commands"),
     )
 
     @bot.event
     async def on_ready() -> None:
         print("{0.user} online and ready to roll".format(bot))
 
-    # TODO: consider to replace with auto-generated discord help command
-    @bot.command()
-    async def help(ctx: Context) -> None:
-        await ctx.send(help_message())
-
-    @bot.command()
+    @bot.command(
+        brief="Report statistics for a given dice type.",
+        description="Report statistics for a given dice type.",
+        usage="DiceType",
+        help="DiceType can be d or w followed by number of sides the dice has. Examples are d6 or w20.",
+    )
     async def stats(ctx: Context, *args: str) -> None:
         await ctx.send(wuerfelbecher_commands.stats(" ".join(args)))
 
-    @bot.command()
+    @bot.command(
+        brief="Roll dices according to a given dice pattern. Use r as a short alias.",
+        description="Roll dices according to a given dice pattern. Multiple patterns split by a space are also possible to roll at once.",
+        usage="DicePattern",
+        help="DicePattern can be a number, followed by a DiceType, optionally followed (or preceded) by a positive or negative modificator, including just + or - sign. If any modifier is given, the dice results are summed up, including the modifier. Examples are 3w20, 1d6+4, 12+w6, or 7d6+.\n\nDiceType can be d or w followed by number of sides the dice has. Examples are d6 or w20.",
+        aliases=["r"],
+    )
     async def roll(ctx: Context, *args: str) -> None:
-        await ctx.send(ctx.author.display_name + ": " + wuerfelbecher_commands.roll(" ".join(args)))
-
-    @bot.command()
-    async def r(ctx: Context, *args: str) -> None:
         await ctx.send(ctx.author.display_name + ": " + wuerfelbecher_commands.roll(" ".join(args)))
 
     return bot
