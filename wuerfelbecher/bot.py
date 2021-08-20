@@ -7,25 +7,25 @@ from discord.ext.commands import DefaultHelpCommand  # type: ignore
 from . import commands as wuerfelbecher_commands
 
 
-def get_bot_token(secret_path: str, environment_variable: str) -> str:
+def get_bot_token(path_to_file: str, environment_variable: str) -> str:
     """
-    Strategy: First check for docker secret at secret_path, then fallback to environment_variable, then fail
+    Strategy: First check for docker secret at path_to_file, then fallback to environment_variable, then fail
     """
-    if os.path.exists(secret_path):
-        print("Found secret to login at {}".format(secret_path))
-        return open(secret_path).read().rstrip("\n")
+    if os.path.exists(path_to_file):
+        print("Found secret to login at {}".format(path_to_file))
+        return open(path_to_file).read().rstrip("\n")
     elif environment_variable in os.environ:
         print("Found environment variable {} to login".format(environment_variable))
         return os.getenv(environment_variable, "ENV_VAR_WAS_UNDEFINED")
     else:
         print(
             "Failed to find access token for discord bot at {} or environment variable {}".format(
-                secret_path, environment_variable
+                path_to_file, environment_variable
             )
         )
         raise RuntimeError(
             "Failed to find access token for discord bot at {} or environment variable {}".format(
-                secret_path, environment_variable
+                path_to_file, environment_variable
             )
         )
 
