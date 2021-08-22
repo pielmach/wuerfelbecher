@@ -53,6 +53,17 @@ echo <discord-bot-token> > discord_bot_token.secret
 docker-compose up --build
 ```
 
+### Running in Azure
+
+If you want to run the bot in Azure, rather than your local machine, you can use the provided [Terraform](https://www.terraform.io/) config (`wuerfelbecher_azure.tf`) to setup an Azure Container Instance that runs the officially released Docker images.
+
+```bash
+# read the access token from the environment or skip this command and enter it manually when running the apply
+export TF_VAR_discord_bot_token=<discord-bot-token>
+terraform init
+terraform apply
+```
+
 ## Code-Style and Tests
 
 Wuerfelbecher was developed using TDD and formatted using isort and black. If you want to tweak it to your needs, below will run all formatters, tests and determine code coverage for you.
