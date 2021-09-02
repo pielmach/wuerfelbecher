@@ -24,8 +24,10 @@ def _translate_dice_pattern_inverse_match(match: re.Match) -> SetToRoll:
 
 
 def parse_roll(message: str) -> List[SetToRoll]:
-    """Parses the message of the roll command. The applied strategy is:
+    """
+    Parses the message of the roll command.
 
+    The following strategz is applied:
     1. Try the regular dice pattern e.g. 2d6+10
     2. Try the inverse dice pattern e.g. 10+2d6
     3. Split message on spaces and do a recursive attempt for each split, if one split fails, entire message fails

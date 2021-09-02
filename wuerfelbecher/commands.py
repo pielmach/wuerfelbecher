@@ -8,7 +8,7 @@ def roll(message: str) -> str:
         for s in sets_to_roll:
             result += "  "
             rolls = []
-            for i in range(s.count):
+            for _ in range(s.count):
                 rolls.append(dice_roller.roll_dice(s.dice_type))
             result += "[ **" + "  ".join([str(i) for i in rolls]) + "** ]"
             if s.modifier is not None:

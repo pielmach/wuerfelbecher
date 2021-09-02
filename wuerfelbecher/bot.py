@@ -8,9 +8,7 @@ from . import commands as wuerfelbecher_commands
 
 
 def get_bot_token(path_to_file: str, environment_variable: str) -> str:
-    """
-    Strategy: First check for docker secret at path_to_file, then fallback to environment_variable, then fail
-    """
+    """Strategy: First check for docker secret at path_to_file, then fallback to environment_variable, then fail."""
     if os.path.exists(path_to_file):
         print("Found secret to login at {}".format(path_to_file))
         return open(path_to_file).read().rstrip("\n")
