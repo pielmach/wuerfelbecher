@@ -1,5 +1,6 @@
 # Wuerfelbecher 
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/3368bcddeb8b4d3a93fae7a32e24496e)](https://app.codacy.com/gh/pielmach/wuerfelbecher?utm_source=github.com&utm_medium=referral&utm_content=pielmach/wuerfelbecher&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://github.com/pielmach/wuerfelbecher/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/pielmach/wuerfelbecher/actions)
 [![codecov](https://codecov.io/gh/pielmach/wuerfelbecher/branch/master/graph/badge.svg)](https://codecov.io/gh/pielmach/wuerfelbecher)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
