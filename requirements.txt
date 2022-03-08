@@ -7,22 +7,22 @@
 aiohttp==3.7.4
     # via
     #   -r requirements.in
-    #   discord.py
+    #   py-cord
 async-timeout==3.0.1
     # via aiohttp
-attrs==21.2.0
+attrs==21.4.0
     # via aiohttp
 chardet==3.0.4
     # via aiohttp
-discord.py==1.7.3
-    # via -r requirements.in
-idna==3.2
+idna==3.3
     # via yarl
-multidict==5.1.0
+multidict==6.0.2
     # via
     #   aiohttp
     #   yarl
-typing-extensions==3.10.0.0
+py-cord==1.7.3
+    # via -r requirements.in
+typing-extensions==4.1.1
     # via aiohttp
-yarl==1.6.3
+yarl==1.7.2
     # via aiohttp
