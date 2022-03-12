@@ -55,12 +55,13 @@ docker-compose up --build
 
 ### Running in Azure
 
-If you want to run the bot in Azure, rather than your local machine, you can use the provided [Terraform](https://www.terraform.io/) config (`wuerfelbecher_azure.tf`) to setup an Azure Container Instance that runs the officially released Docker images.
+If you want to run the bot in Azure, rather than your local machine, you can use the provided [Terraform](https://www.terraform.io/) config (`wuerfelbecher_azure.tf`) to setup an Azure Container Instance that runs the officially released Docker images. Note that it's currently configured to run against an Azure remote backend, see comment in file, hence adopt accordingly.
 
 ```bash
 # read the access token from the environment or skip this command and enter it manually when running the apply
 export TF_VAR_discord_bot_token=<discord-bot-token>
 terraform init
+terraform plan
 terraform apply
 ```
 

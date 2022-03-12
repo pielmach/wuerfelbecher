@@ -1,12 +1,20 @@
 terraform {
+  # remove this backend block entirely to run terraform locally, or adopt settings to your own Azure storage account and container that contains the state file
+  backend "azurerm" {
+    resource_group_name  = "pielmach"
+    storage_account_name = "pielmach"
+    container_name       = "tf-wuerfelbecher"
+    key                  = "terraform.tfstate"
+  }
+
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 2.73"
+      version = "~> 2.99"
     }
   }
 
-  required_version = ">= 1.0.5"
+  required_version = ">= 1.1.7"
 }
 
 provider "azurerm" {
@@ -83,7 +91,7 @@ resource "azurerm_container_group" "cg" {
 variable "wuerfelbecher_release" {
   description = "Wuerfelbecher release to deploy from github container registry"
   type        = string
-  default     = "v1.2.1"
+  default     = "v1.2.2"
 }
 
 variable "discord_bot_token" {
