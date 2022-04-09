@@ -41,8 +41,14 @@ class TestCommands(unittest.TestCase):
         self.assertEqual(commands.roll("d0"), "You shall not pass! Ask for *!help* if you fear my power!")
 
     def test_stats(self):
-        self.assertEqual(commands.stats("d2"), "You rolled 0 times and those were the rolls:\n>>> 1: 0\n2: 0\n")
-        self.assertEqual(commands.stats("W2"), "You rolled 0 times and those were the rolls:\n>>> 1: 0\n2: 0\n")
+        self.assertEqual(
+            commands.stats("d2"),
+            "```You rolled the d2 0 times. Those are the results including how many standard deviations (σ) the result deviates from the expectation value:\n  1:   0  (nanσ)\n  2:   0  (nanσ)\n```",
+        )
+        self.assertEqual(
+            commands.stats("W2"),
+            "```You rolled the d2 0 times. Those are the results including how many standard deviations (σ) the result deviates from the expectation value:\n  1:   0  (nanσ)\n  2:   0  (nanσ)\n```",
+        )
         self.assertEqual(commands.stats("foo"), "You shall not pass! Ask for *!help* if you fear my power!")
 
 

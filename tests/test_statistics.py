@@ -1,4 +1,5 @@
 import unittest
+from math import isnan
 
 from wuerfelbecher import statistics
 
@@ -6,6 +7,15 @@ from wuerfelbecher import statistics
 class TestStatistics(unittest.TestCase):
     def setUp(self):
         statistics.init_statcounter()
+
+    def test_binomial(self):
+        self.assertEqual(statistics.binomial_expectation_value(2, 0.5), 1.0)
+        self.assertEqual(statistics.binomial_variance(2, 0.5), 0.5)
+        self.assertEqual(statistics.binomial_std_deviations(1, 1.0, 0.5), 0.0)
+        self.assertEqual(statistics.binomial_expectation_value(100, 0.05), 5.0)
+        self.assertEqual(statistics.binomial_variance(100, 0.05), 4.75)
+        self.assertAlmostEqual(statistics.binomial_std_deviations(10, 5.0, 4.75), 2.294157338705618)
+        self.assertTrue(isnan(statistics.binomial_std_deviations(10, 5.0, 0.0)))
 
     def test_statistics(self):
         statistics.add_dice_roll(6, 1)
