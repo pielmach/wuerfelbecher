@@ -27,9 +27,24 @@ def stats(message: str) -> str:
     try:
         number_of_sides = parser.parse_stats(message.lower())
         rolls, counts = statistics.get_stats(number_of_sides)
-        return "You rolled {0} times and those were the rolls:\n>>> {1}".format(
+        p = 1.0 / number_of_sides
+        return "```You rolled the d{0} {1} times. Those are the results including how many standard deviations (σ) the result deviates from the expectation value:\n{2}```".format(
+            number_of_sides,
             rolls,
-            "".join(["{0}: {1}\n".format(i, counts[i]) for i in range(1, number_of_sides + 1)]),
+            "".join(
+                [
+                    "{0:>3}: {1:>3}  ({2:.2f}σ)\n".format(
+                        i,
+                        counts[i],
+                        statistics.binomial_std_deviations(
+                            counts[i],
+                            statistics.binomial_expectation_value(rolls, p),
+                            statistics.binomial_variance(rolls, p),
+                        ),
+                    )
+                    for i in range(1, number_of_sides + 1)
+                ]
+            ),
         )
     except ValueError:
         return "You shall not pass! Ask for *!help* if you fear my power!"
