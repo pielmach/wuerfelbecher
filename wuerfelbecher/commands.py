@@ -28,7 +28,7 @@ def stats(message: str) -> str:
         number_of_sides = parser.parse_stats(message.lower())
         rolls, counts = statistics.get_stats(number_of_sides)
         p = 1.0 / number_of_sides
-        return "```You rolled the d{0} {1} times. Those are the results including how many standard deviations (σ) the result deviates from the expectation value:\n{2}```".format(
+        return "```You rolled the d{0} {1} times. Those are the results including how many standard deviations (σ) the result deviates from the expectation value:\n{2}```".format(  # noqa: E501
             number_of_sides,
             rolls,
             "".join(

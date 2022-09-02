@@ -52,9 +52,9 @@ def setup_bot() -> Bot:
 
     @bot.command(
         brief="Roll dices according to a given dice pattern. Use r as a short alias.",
-        description="Roll dices according to a given dice pattern. Multiple patterns split by a space are also possible to roll at once.",
+        description="Roll dices according to a given dice pattern. Multiple patterns split by a space are also possible to roll at once.",  # noqa: E501
         usage="DicePattern",
-        help="DicePattern can be a number, followed by a DiceType, optionally followed (or preceded) by a positive or negative modificator, including just + or - sign. If any modifier is given, the dice results are summed up, including the modifier. Examples are 3w20, 1d6+4, 12+w6, or 7d6+.\n\nDiceType can be d or w followed by number of sides the dice has. Examples are d6 or w20.",
+        help="DicePattern can be a number, followed by a DiceType, optionally followed (or preceded) by a positive or negative modificator, including just + or - sign. If any modifier is given, the dice results are summed up, including the modifier. Examples are 3w20, 1d6+4, 12+w6, or 7d6+.\n\nDiceType can be d or w followed by number of sides the dice has. Examples are d6 or w20.",  # noqa: E501
         aliases=["r"],
     )
     async def roll(ctx: Context, *args: str) -> None:
