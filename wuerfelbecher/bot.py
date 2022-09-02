@@ -30,11 +30,14 @@ def get_bot_token(path_to_file: str, environment_variable: str) -> str:
 
 
 def setup_bot() -> Bot:
+    bot_intents = Intents.default()
+    bot_intents.message_content = True
+
     bot = Bot(
         command_prefix="!",
         description="Wuerfelbecher is a simple dice rolling bot for pen & paper roleplaying",
         help_command=DefaultHelpCommand(no_category="Available commands"),
-        intents=Intents.default(),
+        intents=bot_intents,
     )
 
     @bot.event
