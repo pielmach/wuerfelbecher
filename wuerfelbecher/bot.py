@@ -61,6 +61,6 @@ def setup_bot() -> Bot:
         aliases=["r"],
     )
     async def roll(ctx: Context, *args: str) -> None:
-        await ctx.send(ctx.author.display_name + ": " + wuerfelbecher_commands.roll(" ".join(args)))
+        await ctx.reply(wuerfelbecher_commands.roll(" ".join(args)))
 
     return bot
