@@ -1,5 +1,6 @@
 import os
 
+from discord import Intents  # type: ignore
 from discord.ext.commands import Bot  # type: ignore
 from discord.ext.commands import Context  # type: ignore
 from discord.ext.commands import DefaultHelpCommand  # type: ignore
@@ -33,6 +34,7 @@ def setup_bot() -> Bot:
         command_prefix="!",
         description="Wuerfelbecher is a simple dice rolling bot for pen & paper roleplaying",
         help_command=DefaultHelpCommand(no_category="Available commands"),
+        intents=Intents.default(),
     )
 
     @bot.event
