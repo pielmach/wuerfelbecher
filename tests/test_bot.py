@@ -31,7 +31,7 @@ class TestBot(unittest.TestCase):
     def test_commands(self):
         # validate that each of the commands is actually defined in the bot
         mock_ctx = mock.AsyncMock()
-        loop = asyncio.get_event_loop()
+        loop = asyncio.new_event_loop()
         loop.run_until_complete(self.test_bot.all_commands["stats"](mock_ctx))
         loop.run_until_complete(self.test_bot.all_commands["roll"](mock_ctx))
         loop.run_until_complete(self.test_bot.all_commands["r"](mock_ctx))
