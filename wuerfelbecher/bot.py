@@ -1,4 +1,5 @@
 import os
+from typing import no_type_check
 
 from discord import Intents  # type: ignore
 from discord.ext.commands import Bot  # type: ignore
@@ -44,6 +45,7 @@ def setup_bot() -> Bot:
     async def on_ready() -> None:
         print("{0.user} online and ready to roll".format(bot))
 
+    @no_type_check
     @bot.command(
         brief="Report statistics for a given dice type.",
         description="Report statistics for a given dice type.",
@@ -53,6 +55,7 @@ def setup_bot() -> Bot:
     async def stats(ctx: Context, *args: str) -> None:
         await ctx.send(wuerfelbecher_commands.stats(" ".join(args)))
 
+    @no_type_check
     @bot.command(
         brief="Roll dices according to a given dice pattern. Use r as a short alias.",
         description="Roll dices according to a given dice pattern. Multiple patterns split by a space are also possible to roll at once.",  # noqa: E501

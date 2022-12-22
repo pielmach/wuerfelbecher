@@ -1,6 +1,6 @@
 from collections import Counter, defaultdict
 from math import fabs, nan, sqrt
-from typing import DefaultDict, Tuple
+from typing import DefaultDict, Tuple  # noqa: F401
 
 __statcounter__ = defaultdict(Counter)  # type: DefaultDict[int, Counter]
 
