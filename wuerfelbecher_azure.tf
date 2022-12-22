@@ -10,11 +10,11 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 2.99"
+      version = "~> 3.37"
     }
   }
 
-  required_version = ">= 1.1.7"
+  required_version = ">= 1.2.8"
 }
 
 provider "azurerm" {
@@ -68,8 +68,8 @@ resource "azurerm_container_group" "cg" {
   name                = "wuerfelbecher-bot"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
-  os_type             = "linux"
-  ip_address_type     = "private"
+  os_type             = "Linux"
+  ip_address_type     = "Private"
   network_profile_id  = azurerm_network_profile.netp.id
   restart_policy      = "Never"
 
@@ -91,7 +91,7 @@ resource "azurerm_container_group" "cg" {
 variable "wuerfelbecher_release" {
   description = "Wuerfelbecher release to deploy from github container registry"
   type        = string
-  default     = "v1.4.2"
+  default     = "v1.4.4"
 }
 
 variable "discord_bot_token" {
