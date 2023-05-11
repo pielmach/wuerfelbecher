@@ -10,7 +10,7 @@ terraform {
   required_providers {
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "~> 3.37"
+      version = "~> 3.55"
     }
   }
 
@@ -70,7 +70,7 @@ resource "azurerm_container_group" "cg" {
   resource_group_name = azurerm_resource_group.rg.name
   os_type             = "Linux"
   ip_address_type     = "Private"
-  network_profile_id  = azurerm_network_profile.netp.id
+  subnet_ids          = [azurerm_subnet.snet.id]
   restart_policy      = "Never"
 
   container {
