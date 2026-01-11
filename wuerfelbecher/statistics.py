@@ -20,12 +20,12 @@ def binomial_std_deviations(observed: int, expectation: float, variance: float) 
 
 
 def add_dice_roll(number_of_sides: int, dice_roll: int) -> None:
-    global __statcounter__
+    global __statcounter__  # noqa: F824, F999
     __statcounter__[number_of_sides][dice_roll] += 1  # type: ignore
 
 
 def get_stats(number_of_sides: int) -> Tuple[int, Counter]:
-    global __statcounter__
+    global __statcounter__  # noqa: F824, F999
     return sum(__statcounter__[number_of_sides].values()), __statcounter__[number_of_sides]  # type: ignore
 
 
