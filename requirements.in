@@ -1,2 +1,2 @@
-discord.py>=2.3.2
-aiohttp>=3.9.4,<4
+discord.py>=2.6.4
+aiohttp>=3.13.3,<4
