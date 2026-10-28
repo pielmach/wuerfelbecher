@@ -91,7 +91,7 @@ resource "azurerm_container_group" "cg" {
 variable "wuerfelbecher_release" {
   description = "Wuerfelbecher release to deploy from github container registry"
   type        = string
-  default     = "v1.4.7"
+  default     = "v1.5.1"
 }
 
 variable "discord_bot_token" {
