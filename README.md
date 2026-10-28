@@ -6,7 +6,7 @@
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
 
-Wuerfelbecher is a simple, Python 3.8+ based, Discord bot for rolling dices.
+Wuerfelbecher is a simple, Python 3.14+ based, Discord bot for rolling dices.
 
 It was created during the COVID-19 pandemic, when my pen&paper roleplaying round moved online to practice social distancing and existing bots weren't reliably working. I needed to have a bot that works when we needed it most to get some escapism.
 Maybe it now helps others too.
