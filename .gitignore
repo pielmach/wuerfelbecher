@@ -1,7 +1,9 @@
 .env
 discord_bot_token.secret
+.venv/
 venv/
 __pycache__
+.ruff_cache/
 .vscode
 .coverage
 coverage.xml

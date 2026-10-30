@@ -3,8 +3,7 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/3368bcddeb8b4d3a93fae7a32e24496e)](https://app.codacy.com/gh/pielmach/wuerfelbecher?utm_source=github.com&utm_medium=referral&utm_content=pielmach/wuerfelbecher&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://github.com/pielmach/wuerfelbecher/actions/workflows/main.yml/badge.svg?branch=master)](https://github.com/pielmach/wuerfelbecher/actions)
 [![codecov](https://codecov.io/gh/pielmach/wuerfelbecher/branch/master/graph/badge.svg)](https://codecov.io/gh/pielmach/wuerfelbecher)
-[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-[![Imports: isort](https://img.shields.io/badge/%20imports-isort-%231674b1?style=flat&labelColor=ef8336)](https://pycqa.github.io/isort/)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 
 Wuerfelbecher is a simple, Python 3.14+ based, Discord bot for rolling dices.
 
@@ -41,8 +40,8 @@ See first section of https://www.freecodecamp.org/news/create-a-discord-bot-with
 ```bash
 # if run locally we read the access token from the environment
 export DISCORD_BOT_TOKEN=<discord-bot-token>
-pip install -r requirements.txt
-python wuerfelbecher_bot.py
+uv sync
+uv run python wuerfelbecher_bot.py
 ```
 
 ### Building Docker image and running as a container
@@ -67,21 +66,24 @@ terraform apply
 
 ## Code-Style and Tests
 
-Wuerfelbecher was developed using TDD and formatted using isort and black. If you want to tweak it to your needs, below will run all formatters, tests and determine code coverage for you.
+Wuerfelbecher was developed using TDD and formatted using Ruff. If you want to tweak it to your needs, below will run all formatters, linters, type checks, tests, and determine code coverage for you.
 
 ```bash
-pip install -r requirements.txt
-pip install flake8 black isort mypy pytest pytest-cov
-# auto-sort imports
-isort .
+# sync dependencies including development tools
+uv sync
+
 # auto-format code
-black --line-length=127 .
-# flake8 as run in GitHub action: stop the build if there are Python syntax errors or undefined names
-flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-# flake8 as run in GitHub action: exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+uv run ruff format .
+
+# auto-sort imports and lint check with auto-fix
+uv run ruff check --fix .
+
+# linting and complexity checks
+uv run ruff check .
+
 # type checking with mypy
-mypy --disallow-untyped-defs wuerfelbecher/
+uv run mypy wuerfelbecher/
+
 # execute tests and obtain code coverage
-pytest --cov=wuerfelbecher --cov-report=term-missing tests/
+uv run pytest --cov=wuerfelbecher --cov-report=term-missing tests/
 ```
