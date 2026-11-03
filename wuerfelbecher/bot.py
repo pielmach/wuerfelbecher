@@ -2,9 +2,11 @@ import os
 from typing import no_type_check
 
 from discord import Intents  # type: ignore
-from discord.ext.commands import Bot  # type: ignore
-from discord.ext.commands import Context  # type: ignore
-from discord.ext.commands import DefaultHelpCommand  # type: ignore
+from discord.ext.commands import (
+    Bot,  # type: ignore
+    Context,  # type: ignore
+    DefaultHelpCommand,  # type: ignore
+)
 
 from . import commands as wuerfelbecher_commands
 

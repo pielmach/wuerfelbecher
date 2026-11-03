@@ -1,18 +1,28 @@
 # For more information, please refer to https://aka.ms/vscode-docker-python
 FROM python:3.14-slim-trixie
 
+# Install uv from official image
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /bin/
+
 # Keeps Python from generating .pyc files in the container
 ENV PYTHONDONTWRITEBYTECODE=1
 
 # Turns off buffering for easier container logging
 ENV PYTHONUNBUFFERED=1
 
-# Install pip requirements
-COPY requirements.txt .
-RUN python -m pip install -r requirements.txt
+# Compile bytecode during install to speed up startup
+ENV UV_COMPILE_BYTECODE=1
 
+# Install project dependencies
 WORKDIR /app
+COPY pyproject.toml uv.lock ./
+RUN uv sync --frozen --no-dev
+
+# Copy application code
 COPY . /app
+
+# Ensure virtualenv is on PATH
+ENV PATH="/app/.venv/bin:$PATH"
 
 # Creates a non-root user with an explicit UID and adds permission to access the /app folder
 # For more info, please refer to https://aka.ms/vscode-docker-python-configure-containers

@@ -4,13 +4,13 @@
 **/.discord_bot_token*
 **/.dockerignore
 **/.env
-**/.flake8
 **/.git
 **/.gitignore
 **/.github
 **/.mypy_cache
 **/.project
 **/.pytest_cache
+**/.ruff_cache
 **/.settings
 **/.toolstarget
 **/.vs
@@ -31,6 +31,7 @@
 **/values.dev.yaml
 README.md
 TODO.md
+.venv
 venv
 tests
 coverage.xml
