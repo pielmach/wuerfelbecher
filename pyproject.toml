@@ -1,6 +1,6 @@
 [project]
 name = "wuerfelbecher"
-version = "1.5.1"
+version = "1.6.0"
 description = "A lightweight Discord bot for rolling dice in tabletop RPGs"
 readme = "README.md"
 requires-python = ">=3.14"
