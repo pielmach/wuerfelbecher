@@ -59,6 +59,8 @@ If you want to run the bot in Azure, rather than your local machine, you can use
 ```bash
 # read the access token from the environment or skip this command and enter it manually when running the apply
 export TF_VAR_discord_bot_token=<discord-bot-token>
+# set the image version you want to deploy, e.g. v1.6.0
+export TF_VAR_wuerfelbecher_release=<image-version>
 terraform init
 terraform plan
 terraform apply
